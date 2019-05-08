@@ -1,0 +1,86 @@
+{
+	"Quest": {
+		"Objetivo": {
+			"type": "matar",
+			"cuantitive": "4",
+			"class": "Guerrero"
+		},
+		"Reward": {
+			"Xp": "500"
+		},
+		"SideQuest": "0",
+		"Descripcion": "Mata a los guerreros del bosque",
+		"name": "Quest1",
+		"NextQuest": "Sube Hacia el olimpo"
+	},
+	"Quest2": {
+		"Objetivo": {
+			"type": "matar",
+			"cuantitive": "2",
+			"class": "Protectores"
+		},
+		"Reward": {
+			"Xp": "800"
+		},
+		"SideQuest": "0",
+		"Descripcion": "Mata a los protectores del olimpo",
+		"name": "Quest2",
+		"NextQuest": "Baja las escaleras"
+	},
+	"Quest3": {
+		"Objetivo": {
+			"type": "caminar",
+			"cuantitive": "0",
+			"class": "Ninguna"
+		},
+		"Reward": {
+			"Xp": "0"
+		},
+		"SideQuest": "0",
+		"Descripcion": "Camina hacia la entrada del erebo",
+		"name": "Quest3",
+		"NextQuest": "Entra a la cueva"
+	},
+	"Quest4": {
+		"Objetivo": {
+			"type": "caminar",
+			"cuantitive": "0",
+			"class": "Ninguna"
+		},
+		"Reward": {
+			"Xp": "0"
+		},
+		"SideQuest": "0",
+		"Descripcion": "Explora la zona",
+		"name": "Quest4",
+		"NextQuest": "Salta las rocas"
+	},
+	"Quest5": {
+		"Objetivo": {
+			"type": "caminar",
+			"cuantitive": "2",
+			"class": "Roca"
+		},
+		"Reward": {
+			"Xp": "300"
+		},
+		"SideQuest": "0",
+		"Descripcion": "Salta las roca evitando a los arqueros",
+		"name": "Quest5",
+		"NextQuest": "Dirigete hacia la puerta"
+	},
+	"Quest6": {
+		"Objetivo": {
+			"type": "matar",
+			"cuantitive": "1",
+			"class": "BOSS"
+		},
+		"Reward": {
+			"Xp": "1500"
+		},
+		"SideQuest": "0",
+		"Descripcion": "Consigue tus venganza",
+		"name": "Quest6",
+		"NextQuest": "Escapa"
+	}
+}

@@ -1,0 +1,114 @@
+{  
+   "Equipables":{  
+      "Espada":{  
+         "name":"Espada",
+         "descripcion":"Item Equipable",
+         "Stats":{  
+            "Ataque":4
+         }
+      },
+      "Escudo":{  
+         "name":"Escudo",
+         "descripcion":"Item Equipable",
+         "Stats":{  
+            "Defensa":4
+         }
+      },
+      "Armadura":{  
+         "name":"Armadura",
+         "descripcion":"Item Equipable",
+         "Stats":{  
+            "Defensa":6
+         }
+      },
+      "Llave de candado":{  
+         "name":"Llave",
+         "descripcion":"Item Equipable",
+         "Stats":{  
+            "Defensa":0
+         }
+      }
+   },
+   "Pasivos":{  
+      "Botas de vuelvo":{  
+         "name":"Botas",
+         "descripcion":"Item Pasivo",
+         "Stats":{  
+            "Altura":6,
+            "Tiempo":30
+         }
+      },
+      "Escudo x2":{  
+         "name":"Escudo x2",
+         "descripcion":"Item Pasivo",
+         "Stats":{  
+            "Defensa":8,
+            "Tiempo":40
+         }
+      },
+      "Danio x2":{  
+         "name":"Daniox2",
+         "descripcion":"Item Pasivo",
+         "Stats":{  
+            "Ataque":8,
+            "Tiempo":30
+         }
+      }
+   },
+   "Consumibles":{  
+      "Daniox5":{  
+         "name":"Daniox5",
+         "descripcion":"Item Consumible",
+         "Stats":{  
+            "Ataque":20
+         }
+      },
+      "Escudox2":{  
+         "name":"Escudox2",
+         "descripcion":"Item Consumible",
+         "Stats":{  
+            "Defensa":8
+         }
+      },
+      "Pocion de vida":{  
+         "name":"Pocion de vida",
+         "descripcion":"Item Consumible",
+         "Stats":{  
+            "Vidacap":5
+         }
+      }
+   },
+   "Constantes":{  
+      "Daniox2":{  
+         "name":"Daniox2",
+         "descripcion":"Item Constante",
+         "Stats":{  
+            "Ataque":4
+         }
+      },
+      "Aura verde":{  
+         "name":"Aura verde",
+         "descripcion":"Item Constante",
+         "Stats":{  
+            "VidaCap":5,
+            "Ataque":5
+         }
+      },
+      "Bonificacion de danio x2":{  
+         "name":"Danio x2",
+         "descripcion":"Item Constante",
+         "Stats":{  
+            "Ataque":4
+         }
+      },
+      "Boss Fight":{  
+         "name":"Boss Fight",
+         "descripcion":"Item Constante",
+         "Stats":{  
+            "Armadura":50,
+            "Ataque":50,
+            "Defensa":50
+         }
+      }
+   }
+}
