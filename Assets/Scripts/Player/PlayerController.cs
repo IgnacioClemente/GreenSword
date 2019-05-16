@@ -9,8 +9,12 @@ public class PlayerController : CharacterBase
    public playerStatsModificables statsMod;
 
     private Animator anim;
+    private Rigidbody rb;
 
     public float ActualSpeed;
+
+    public float ActualRotation;
+
 
     public struct playerStatsModificables
     {
@@ -23,6 +27,7 @@ public class PlayerController : CharacterBase
 		public float AlturaCAPModi;
         public float armaduraCAPModi;
         public float speedModi;
+        public float rotateModi;
     }
 
 	public float VidaCAPTot {get {return playerStats.vidaCAP + statsMod.vidaCAPModi;}}
@@ -35,22 +40,33 @@ public class PlayerController : CharacterBase
 	public float ManaCAPTot {get {return playerStats.mana;}}
 	public float StaminaCAPTot {get {return playerStats.staminaCAP + statsMod.StaminaCAPModi;}}
     public float SpeedTot { get { return playerStats.speed + statsMod.speedModi; } }
+    public float rotateTot { get { return playerStats.rotation + statsMod.rotateModi; } }
 	public float XPTot {get {return playerStats.xp;}}
 	public float LevelTot {get {return playerStats.level;}}
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();  
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
         ActualSpeed = Input.GetAxis("Vertical") * SpeedTot;
 
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            ActualSpeed *= 2f;
+        }
+        
         transform.position += transform.forward *  ActualSpeed * Time.deltaTime;
 
+        ActualRotation = Input.GetAxis("Horizontal") * SpeedTot;
 
+        transform.Rotate(Vector3.up * ActualRotation);
 
-        anim.SetFloat("speed", Mathf.Abs(ActualSpeed));
+        if (Input.GetKeyDown(KeyCode.Space)) rb.AddForce(Vector3.up * 400); 
+
+        anim.SetFloat("Speed", Mathf.Abs(ActualSpeed));
     }
 }

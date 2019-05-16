@@ -194,18 +194,19 @@ public class JsonManager : MonoBehaviour
                 jsonObjaux = jsonObj[i].GetField("Objetivo");
                 questArray[i].obj = new Objetivo();
                 questArray[i].obj.type = (jsonObjaux.HasField("type")) ? (Objetivo.QuestType)(System.Enum.Parse(typeof(Objetivo.QuestType), (jsonObjaux.GetField("type").str))) : Objetivo.QuestType.ERROR;
-                questArray[i].obj.cuantitive = (jsonObjaux.HasField("cuantitive")) ? jsonObjaux.GetField("cuantitive").n : 0; ;
-                questArray[i].obj._class = (jsonObjaux.HasField("class")) ? jsonObjaux.GetField("class").n : 0; ;
+                questArray[i].obj.cuantitive = (jsonObjaux.HasField("cuantitive")) ? jsonObjaux.GetField("cuantitive").n : 0;
+                questArray[i].obj._class = (jsonObjaux.HasField("class")) ? jsonObjaux.GetField("class").n : 0;
             }
             if (jsonObj[i].HasField("Reward"))
             {
                 jsonObjaux = jsonObj[i].GetField("Reward");
                 questArray[i].reward = new Reward();
-                questArray[i].reward.xp = (jsonObjaux.HasField("Xp")) ? (int)jsonObjaux.GetField("Xp").n : 0; ;
+                questArray[i].reward.xp = (jsonObjaux.HasField("Xp")) ? (int)jsonObjaux.GetField("Xp").n : 0;
             }
+            jsonObjaux = jsonObj[i];
             if (jsonObj[i].HasField("SideQuest"))
             {
-                questArray[i].Queststats.sidequest = (jsonObjaux.HasField("SideQuest")) ? jsonObjaux.GetField("SideQuest").n : 0; ;
+                questArray[i].Queststats.sidequest = (jsonObjaux.HasField("SideQuest")) ? jsonObjaux.GetField("SideQuest").n : 0;
             }
             if (jsonObj[i].HasField("Descripcion"))
             {
@@ -217,7 +218,7 @@ public class JsonManager : MonoBehaviour
             }
             if (jsonObj[i].HasField("NextQuest"))
             {
-                questArray[i].Queststats.nextquest = (jsonObjaux.HasField("NextQuest")) ? jsonObjaux.GetField("NextQuest").n : 0; ;
+                questArray[i].Queststats.nextquest = (jsonObjaux.HasField("NextQuest")) ? jsonObjaux.GetField("NextQuest").n : 0;
             }
 
             jsonObjaux = jsonObj;

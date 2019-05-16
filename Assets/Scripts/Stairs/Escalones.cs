@@ -36,7 +36,9 @@ public class Escalones : MonoBehaviour
     {
         if(other.gameObject.GetComponent<PlayerController>()!=null)
         {
-            if(questmanager.finishedQuests("Quest1"))
+            active = true;
+
+            /*if (questmanager.finishedQuests("Quest1"))
             {
                 Quest auxQ = jsonmanager.Getquest("Quest2");
                 questmanager.AddQuest(auxQ);
@@ -72,6 +74,7 @@ public class Escalones : MonoBehaviour
             {
 
             }
+            */
             //questmanager.AddQuest(jsonmanager.Getquest("Quest2")); //LO mismo que las 2 sentencias de arriba
         }
     }

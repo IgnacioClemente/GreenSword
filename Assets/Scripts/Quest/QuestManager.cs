@@ -4,21 +4,32 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    [SerializeField] JsonManager jsonmanager;
+    [SerializeField] PlayerController player;
+
     List<Quest> listQuest;
     List<Quest> listSideQuest;
     List<Quest> activeQuest;
     List<Quest> activeSideQuest;
     List<Quest> toBeRewardedQuest;
     List<Quest> finishQuest;
-    JsonManager jsonmanager;
-    PlayerController player;
 
     void Awake()
     {
+        listQuest = new List<Quest>();
+        listSideQuest = new List<Quest>();
+        activeQuest = new List<Quest>();
+        activeSideQuest = new List<Quest>();
+        toBeRewardedQuest = new List<Quest>();
+        finishQuest = new List<Quest>();
+    }
+
+    private void Start()
+    {
         activeQuest.Add(jsonmanager.Getquest("Quest1"));
     }
-    
-   public void AddSideQuest(Quest sidequest)
+
+    public void AddSideQuest(Quest sidequest)
     {
         listSideQuest.Add(sidequest);
     }

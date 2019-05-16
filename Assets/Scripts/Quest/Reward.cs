@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Reward : MonoBehaviour
+[System.Serializable]
+public class Reward
 {
     public int money;
     public int xp;

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Objetivo : MonoBehaviour
+[System.Serializable]
+public class Objetivo
 {
     public QuestType type;
     public float cuantitive;

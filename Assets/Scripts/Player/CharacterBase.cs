@@ -29,6 +29,7 @@ public class CharacterBase : MonoBehaviour {
 		public float staminaCAP;
         public float xp;
         public float speed;
+        public float rotation;
     }
 
     public enum characterType

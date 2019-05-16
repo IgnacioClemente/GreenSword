@@ -33,9 +33,10 @@ public class Inventario : MonoBehaviour
     public Text _textItemArmadura;
 
     [SerializeField] PlayerController _character;
+    [SerializeField] int indexPlayer = 0;
+
     Items _item;
     public JsonManager json;
-    int indexPlayer = 0;
 
     
     private void Start()

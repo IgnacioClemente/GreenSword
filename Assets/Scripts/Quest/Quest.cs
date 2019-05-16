@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quest : MonoBehaviour {
+[System.Serializable]
+public class Quest {
     
     public string _name;
     public string desc;
