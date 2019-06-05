@@ -24,7 +24,7 @@
             "Defensa":2,
             "Ataque":4,
             "Speed":5,
-            "Level":0,
+            "Level":1,
             "xp":0,
             "Destreza":2,
             "Stamina":6,

@@ -1,0 +1,15 @@
+{
+	"SideQuest1": {
+		"Objetivo": {
+			"type": "matar",
+			"cuantitive": 1,
+			"class": "BOSS"
+		},
+		"Reward": {
+			"Xp": 1500
+		},
+		"SideQuest": "",
+		"Descripcion": "Consigue tus venganza",
+		"name": "SideQuest1"
+	}
+}

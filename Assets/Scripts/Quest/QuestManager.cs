@@ -9,85 +9,98 @@ public class QuestManager : MonoBehaviour
 
     List<Quest> listQuest;
     List<Quest> listSideQuest;
-    List<Quest> activeQuest;
-    List<Quest> activeSideQuest;
+    Quest activeQuest;
+    Quest activeSideQuest;
     List<Quest> toBeRewardedQuest;
-    List<Quest> finishQuest;
+    List<Quest> finishedQuests;
 
     void Awake()
     {
         listQuest = new List<Quest>();
         listSideQuest = new List<Quest>();
-        activeQuest = new List<Quest>();
-        activeSideQuest = new List<Quest>();
         toBeRewardedQuest = new List<Quest>();
-        finishQuest = new List<Quest>();
+        finishedQuests = new List<Quest>();
     }
 
     private void Start()
     {
-        activeQuest.Add(jsonmanager.Getquest("Quest1"));
+        listQuest = jsonmanager.GetQuests();
+        listSideQuest = jsonmanager.GetSideQuests();
+        ActivateQuest(listQuest[0]);
     }
 
-    public void AddSideQuest(Quest sidequest)
+    public void ActivateQuest(Quest quest)
     {
-        listSideQuest.Add(sidequest);
+        if (quest == null) return;
+
+        activeQuest = quest;
+        activeSideQuest = GetSideQuest(quest.Queststats.sidequest);
     }
 
-    public void RemoveSideQuest(Quest sidequest)
+    public void FinishQuest(Quest finishedQuest) 
     {
-        listSideQuest.Remove(sidequest);
-        toBeRewardedQuest.Add(sidequest);
-    }
-
-    public void AddQuest(Quest quest)
-    {
-        listQuest.Add(quest);
-    }
-
-   public void RemoveQuest(Quest quest)
-    {
-        listQuest.Remove(quest);
-        toBeRewardedQuest.Add(quest);
+        AddReward(finishedQuest.reward);
+        finishedQuest.obj.completed = true;
+        finishedQuests.Add(finishedQuest);
+        //Si la quest terminada tiene nextquest, la activo
+        if (!string.IsNullOrEmpty(finishedQuest.Queststats.nextquest))
+            ActivateQuest(Getquest(finishedQuest.Queststats.nextquest));
     }
 
     void AddReward(Reward reward)
     {
         player.playerStats.xp += reward.xp;
-        //player.playerStats.money += reward.money;
-        for(int i = 0; i < reward.item.Length;i++)
+        /*for(int i = 0; i < reward.item.Length;i++)
         {
             player.inventario.itemArray.Add(reward.item[i]);
-        }
+        }*/
     }
 
-    public bool finishedQuests(string p_name)
+    public Quest Getquest(string _name)
     {
-        bool found;
-        found = toBeRewardedQuest.Contains(jsonmanager.Getquest(p_name));
-        return found;
+        for (int i = 0; i < listQuest.Count; i++)
+        {
+            if (listQuest[i]._name == _name)
+            {
+                return listQuest[i];
+            }
+        }
+        return null;
     }
 
-   /* void Update()
+    public Quest GetSideQuest(string _name)
     {
-		for(int i = 0;i < activeQuest.Count;i++)
+        for (int i = 0; i < listSideQuest.Count; i++)
         {
-            if(activeQuest[i].obj.Compleat())
+            if (listSideQuest[i]._name == _name)
             {
-                AddReward(activeQuest[i].reward);
-                toBeRewardedQuest.Remove(activeQuest[i]);
-                finishQuest.Add(activeQuest[i]);
+                return listSideQuest[i];
             }
         }
-        for (int i = 0; i < activeSideQuest.Count; i++)
-        {
-            if (activeSideQuest[i].obj.Compleat())
-            {
-                AddReward(activeSideQuest[i].reward);
-                toBeRewardedQuest.Remove(activeSideQuest[i]);
-                finishQuest.Add(activeSideQuest[i]);
-            }
+        return null;
+    }
 
-        }
-    }*/
+    void Update()
+     {
+        if (Input.GetKeyDown(KeyCode.J)) FinishQuest(activeQuest);
+         /*for(int i = 0;i < activeQuest.Count;i++)
+         {
+             if(activeQuest[i].obj.Compleat())
+             {
+                 AddReward(activeQuest[i].reward);
+                 toBeRewardedQuest.Remove(activeQuest[i]);
+                 finishQuest.Add(activeQuest[i]);
+             }
+         }
+         for (int i = 0; i < activeSideQuest.Count; i++)
+         {
+             if (activeSideQuest[i].obj.Compleat())
+             {
+                 AddReward(activeSideQuest[i].reward);
+                 toBeRewardedQuest.Remove(activeSideQuest[i]);
+                 finishQuest.Add(activeSideQuest[i]);
+             }
+
+         }*/
+     }
 }

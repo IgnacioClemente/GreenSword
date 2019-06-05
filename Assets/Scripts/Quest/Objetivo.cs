@@ -7,7 +7,8 @@ public class Objetivo
 {
     public QuestType type;
     public float cuantitive;
-    public float _class;
+    public string _class;
+    public bool completed;
 
     public enum QuestType
     {

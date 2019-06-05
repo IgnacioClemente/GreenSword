@@ -9,6 +9,7 @@ public class JsonManager : MonoBehaviour
     CharacterBase[] players;
     Items[] items;
     Quest[] quest;
+    Quest[] sideQuest;
 
     private void Awake()
     {
@@ -18,16 +19,20 @@ public class JsonManager : MonoBehaviour
         items = LoadJsonItems(jsonItems);
         string jsonQuest = LoadText("Quest.txt");
         quest = LoadJsonQuest(jsonQuest);
+        string jsonSideQuest = LoadText("SideQuest.txt");
+        sideQuest = LoadJsonQuest(jsonSideQuest);
     }
 
     public CharacterBase[] GetPlayers()
     {
         return players;
     }
+
     public Items [] GetItems()
     {
         return items;
     }
+
     public Items GetItem(string _name)
     {
         for (int i = 0; i < items.Length; i++)
@@ -39,18 +44,18 @@ public class JsonManager : MonoBehaviour
         }
         return null;
     }
-    public Quest Getquest(string _name)
+
+    public List<Quest> GetQuests()
     {
-        for (int i = 0; i < quest.Length; i++)
-        {
-            if (quest[i]._name == _name)
-            {
-                return quest[i];
-            }
-        }
-        return null;
+        List<Quest> questsToReturn = new List<Quest>(quest);
+        return questsToReturn;
     }
 
+    public List<Quest> GetSideQuests()
+    {
+        List<Quest> questsToReturn = new List<Quest>(sideQuest);
+        return questsToReturn;
+    }
     private Items[] LoadJsonItems(string json1)
     {
         JSONObject jsonObj = new JSONObject(json1);
@@ -195,7 +200,7 @@ public class JsonManager : MonoBehaviour
                 questArray[i].obj = new Objetivo();
                 questArray[i].obj.type = (jsonObjaux.HasField("type")) ? (Objetivo.QuestType)(System.Enum.Parse(typeof(Objetivo.QuestType), (jsonObjaux.GetField("type").str))) : Objetivo.QuestType.ERROR;
                 questArray[i].obj.cuantitive = (jsonObjaux.HasField("cuantitive")) ? jsonObjaux.GetField("cuantitive").n : 0;
-                questArray[i].obj._class = (jsonObjaux.HasField("class")) ? jsonObjaux.GetField("class").n : 0;
+                questArray[i].obj._class = jsonObjaux.HasField("class") ? jsonObjaux.GetField("class").str : "";
             }
             if (jsonObj[i].HasField("Reward"))
             {
@@ -206,7 +211,7 @@ public class JsonManager : MonoBehaviour
             jsonObjaux = jsonObj[i];
             if (jsonObj[i].HasField("SideQuest"))
             {
-                questArray[i].Queststats.sidequest = (jsonObjaux.HasField("SideQuest")) ? jsonObjaux.GetField("SideQuest").n : 0;
+                questArray[i].Queststats.sidequest = jsonObjaux.HasField("SideQuest") ? jsonObjaux.GetField("SideQuest").str : "";
             }
             if (jsonObj[i].HasField("Descripcion"))
             {
@@ -218,7 +223,7 @@ public class JsonManager : MonoBehaviour
             }
             if (jsonObj[i].HasField("NextQuest"))
             {
-                questArray[i].Queststats.nextquest = (jsonObjaux.HasField("NextQuest")) ? jsonObjaux.GetField("NextQuest").n : 0;
+                questArray[i].Queststats.nextquest = jsonObjaux.HasField("NextQuest") ? jsonObjaux.GetField("NextQuest").str : "";
             }
 
             jsonObjaux = jsonObj;

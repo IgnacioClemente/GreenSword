@@ -14,7 +14,7 @@ public class Quest {
 
     public struct Stats
     {
-        public float sidequest;
-        public float nextquest;
+        public string sidequest;
+        public string nextquest;
     }
 }

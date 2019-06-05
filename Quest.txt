@@ -8,7 +8,7 @@
 		"Reward": {
 			"Xp": 500
 		},
-		"SideQuest": 0,
+		"SideQuest": "",
 		"Descripcion": "Mata a los guerreros del bosque",
 		"name": "Quest1",
 		"NextQuest": "Sube Hacia el olimpo"
@@ -22,9 +22,9 @@
 		"Reward": {
 			"Xp": 800
 		},
-		"SideQuest": 0,
+		"SideQuest": "",
 		"Descripcion": "Mata a los protectores del olimpo",
-		"name": "Quest2",
+		"name": "Sube Hacia el olimpo",
 		"NextQuest": "Baja las escaleras"
 	},
 	"Quest3": {
@@ -36,9 +36,9 @@
 		"Reward": {
 			"Xp": 0
 		},
-		"SideQuest": 0,
+		"SideQuest": "",
 		"Descripcion": "Camina hacia la entrada del erebo",
-		"name": "Quest3",
+		"name": "Baja las escaleras",
 		"NextQuest": "Entra a la cueva"
 	},
 	"Quest4": {
@@ -50,9 +50,9 @@
 		"Reward": {
 			"Xp": 0
 		},
-		"SideQuest": 0,
+		"SideQuest": "",
 		"Descripcion": "Explora la zona",
-		"name": "Quest4",
+		"name": "Entra a la cueva",
 		"NextQuest": "Salta las rocas"
 	},
 	"Quest5": {
@@ -64,9 +64,9 @@
 		"Reward": {
 			"Xp": 300
 		},
-		"SideQuest": 0,
+		"SideQuest": "SideQuest1",
 		"Descripcion": "Salta las roca evitando a los arqueros",
-		"name": "Quest5",
+		"name": "Salta las rocas",
 		"NextQuest": "Dirigete hacia la puerta"
 	},
 	"Quest6": {
@@ -78,9 +78,9 @@
 		"Reward": {
 			"Xp": 1500
 		},
-		"SideQuest": 0,
+		"SideQuest": "",
 		"Descripcion": "Consigue tus venganza",
-		"name": "Quest6",
+		"name": "Dirigete hacia la puerta",
 		"NextQuest": "Escapa"
 	}
 }
