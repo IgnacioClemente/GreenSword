@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class EnemyController : CharacterBase
 {
+    public EnemyController(string name, string desc, CharacterType type) : base(name, desc, type)
+    {
+    }
 
+    private void Start()
+    {
+        
+    }
     //quest
-    void weaponDrop()
+    public void weaponDrop()
     {
 
 
     }
-    void ChageStates()
+    public void ChageStates()
     {
 
     }

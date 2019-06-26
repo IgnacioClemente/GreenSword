@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class PlayerController : CharacterBase
 {
-   public Inventario inventario; 
-   // string nombre = "Broth";
-   public playerStatsModificables statsMod;
+    public Inventario inventario; 
+    // string nombre = "Broth";
+    public playerStatsModificables statsMod;
 
     private Animator anim;
     private Rigidbody rb;
+    private bool isGrounded;
+    private bool inDialogue;
 
     public float ActualSpeed;
-
     public float ActualRotation;
 
+    public PlayerController(string name, string desc, CharacterType type) : base(name, desc, type)
+    {
+    }
+
+    public bool InDialogue { get { return inDialogue; } set { inDialogue = value; } }
 
     public struct playerStatsModificables
     {
@@ -52,21 +58,46 @@ public class PlayerController : CharacterBase
 
     private void Update()
     {
-        ActualSpeed = Input.GetAxis("Vertical") * SpeedTot;
-
-        if(Input.GetKey(KeyCode.LeftShift))
+        if (!inDialogue)
         {
-            ActualSpeed *= 2f;
+            ActualSpeed = Input.GetAxis("Vertical") * SpeedTot;
+
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                ActualSpeed *= 2f;
+            }
+
+            transform.position += transform.forward * ActualSpeed * Time.deltaTime;
+
+            ActualRotation = Input.GetAxis("Horizontal") * SpeedTot;
+
+            transform.Rotate(Vector3.up * ActualRotation);
+
+            if (isGrounded && Input.GetKeyDown(KeyCode.Space)) rb.AddForce(Vector3.up * 400);
         }
-        
-        transform.position += transform.forward *  ActualSpeed * Time.deltaTime;
-
-        ActualRotation = Input.GetAxis("Horizontal") * SpeedTot;
-
-        transform.Rotate(Vector3.up * ActualRotation);
-
-        if (Input.GetKeyDown(KeyCode.Space)) rb.AddForce(Vector3.up * 400); 
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space)) DialogueManager.Instance.NextSentence();
+        }
 
         anim.SetFloat("Speed", Mathf.Abs(ActualSpeed));
+
+        ActualSpeed = 0;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Floor"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            isGrounded = false;
+        }
     }
 }

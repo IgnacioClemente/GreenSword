@@ -6,15 +6,20 @@ using System.Text;
 
 public class JsonManager : MonoBehaviour
 {
-    CharacterBase[] players;
+    public static JsonManager Instance { get; private set; }
+
+    CharacterBase[] characters;
     Items[] items;
     Quest[] quest;
     Quest[] sideQuest;
 
     private void Awake()
     {
-        string jsonPlayers = LoadText("Player.txt");
-        players = LoadJsonPersonaje(jsonPlayers);
+        if (Instance != null) Destroy(gameObject);
+        Instance = this;
+        
+        string jsonCharacters = LoadText("Characters.txt");
+        characters = LoadJsonPersonaje(jsonCharacters);
         string jsonItems = LoadText("Items.txt");
         items = LoadJsonItems(jsonItems);
         string jsonQuest = LoadText("Quest.txt");
@@ -23,9 +28,19 @@ public class JsonManager : MonoBehaviour
         sideQuest = LoadJsonQuest(jsonSideQuest);
     }
 
-    public CharacterBase[] GetPlayers()
+    public CharacterBase[] GetCharacters()
     {
-        return players;
+        return characters;
+    }
+
+    public CharacterBase GetCharacter(CharacterType character)
+    {
+        for (int i = 0; i < characters.Length; i++)
+        {
+            if (characters[i].type == character) return characters[i];
+        }
+
+        return null;
     }
 
     public Items [] GetItems()
@@ -257,11 +272,17 @@ public class JsonManager : MonoBehaviour
         {
             //vuelvo al original y entro a los personajes
             jsonObjaux = jsonObj.GetField("Personaje"); //esto me devuelve una lista de personajes
+
+            
             //YA DEBEN CREAR EL ARRAY DE OBJETOS PERSONAJE
-            playerArray[i] = new CharacterBase();
-            playerArray[i]._name = (jsonObjaux[i].HasField("name")) ? jsonObjaux[i].GetField("name").str : string.Empty; //en estos casos uso el indice i para acceder al nombre de cada uno de los personajes de la lista
-            playerArray[i].desc = (jsonObjaux[i].HasField("descripcion")) ? jsonObjaux[i].GetField("descripcion").str : string.Empty;
-            playerArray[i].type = (jsonObjaux[i].HasField("type")) ? (CharacterBase.characterType)(System.Enum.Parse(typeof(CharacterBase.characterType), (jsonObjaux[i].GetField("type").str))) : CharacterBase.characterType.ERROR;
+            playerArray[i] = new CharacterBase((jsonObjaux[i].HasField("name")) ? jsonObjaux[i].GetField("name").str : string.Empty,
+                                                (jsonObjaux[i].HasField("descripcion")) ? jsonObjaux[i].GetField("descripcion").str : string.Empty,
+                                                (jsonObjaux[i].HasField("type")) ? (CharacterType)(System.Enum.Parse(typeof(CharacterType), (jsonObjaux[i].GetField("type").str))) : CharacterType.ERROR
+                                                );
+            //playerArray[i]._name = (jsonObjaux[i].HasField("name")) ? jsonObjaux[i].GetField("name").str : string.Empty; //en estos casos uso el indice i para acceder al nombre de cada uno de los personajes de la lista
+            //playerArray[i].desc = (jsonObjaux[i].HasField("descripcion")) ? jsonObjaux[i].GetField("descripcion").str : string.Empty;
+            //playerArray[i].type = (jsonObjaux[i].HasField("type")) ? (CharacterBase.characterType)(System.Enum.Parse(typeof(CharacterBase.characterType), (jsonObjaux[i].GetField("type").str))) : CharacterBase.characterType.ERROR;
+
 
             if (jsonObjaux[i].HasField("Stats"))
             {

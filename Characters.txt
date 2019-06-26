@@ -1,0 +1,84 @@
+{
+   "Personaje":{
+      "Guerrero":{
+         "type":"Guerrero",
+         "name":"Troll",
+         "descripcion":"Criatura de mal caracter y olor",
+         "Stats":{
+            "Defensa":2,
+            "Ataque":4,
+            "Speed":5,
+            "Level":2,
+            "xp":0,
+            "Destreza":4,
+            "Stamina":2,
+            "Mana":0,
+            "Vida":100
+         }
+      },
+      "Heroe":{
+         "type":"Heroe",
+         "name":"Throd",
+         "descripcion":"Un joven listo para cobrar su venganza",
+         "Stats":{
+            "Defensa":2,
+            "Ataque":4,
+            "Speed":5,
+            "Level":1,
+            "xp":0,
+            "Destreza":2,
+            "Stamina":6,
+            "Mana":0,
+            "Vida":100
+         }
+      },
+      "Arquero":{
+         "type":"Arquero",
+         "name":"Arquero Esqueleto",
+         "descripcion":"Muertos del inframundo",
+         "Stats":{
+            "Defensa":1,
+            "Ataque":5,
+            "Speed":5,
+            "Level":4,
+            "xp":0,
+            "Destreza":2,
+            "Stamina":4,
+            "Mana":0,
+            "Vida":150
+         }
+      },
+      "Protectores":{
+         "type":"Protectores",
+         "name":"Protectores del Olimpo",
+         "descripcion":"Antiguos protectores de los dominios de zeus",
+         "Stats":{
+            "Defensa":2,
+            "Ataque":5,
+            "Speed":5,
+            "Level":6,
+            "xp":0,
+            "Destreza":2,
+            "Stamina":1,
+            "Mana":0,
+            "Vida":300
+         }
+      },
+      "BOSS":{
+         "type":"BOSS",
+         "name":"Shirak",
+         "descripcion":"Criatura maligna dispuesta a server a Hades",
+         "Stats":{
+            "Defensa":4,
+            "Ataque":6,
+            "Speed":5,
+            "Level":10,
+            "xp":0,
+            "Destreza":4,
+            "Stamina":2,
+            "Mana":0,
+            "Vida":8500
+         }
+      }
+   }
+}

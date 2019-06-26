@@ -33,21 +33,20 @@ public class Inventario : MonoBehaviour
     public Text _textItemArmadura;
 
     [SerializeField] PlayerController _character;
-    [SerializeField] int indexPlayer = 0;
+    [SerializeField] CharacterType _characterType;
 
     Items _item;
-    public JsonManager json;
 
     
     private void Start()
     {
         //_character = (PlayerController)gameObject.AddComponent(typeof(PlayerController));
-        _character.AddBaseInfo(json.GetPlayers()[indexPlayer]);
+        _character.AddBaseInfo(JsonManager.Instance.GetCharacter(_characterType));
         itemArray = new List<Items>();
 
-        for (int i = 0; i < json.GetItems().Length; i++)
+        for (int i = 0; i < JsonManager.Instance.GetItems().Length; i++)
         {
-            itemArray.Add(json.GetItems()[i]);
+            itemArray.Add(JsonManager.Instance.GetItems()[i]);
         }
 
         _item = itemArray[0];
