@@ -9,6 +9,7 @@ public class Quest {
     public string desc;
     public Objetivo obj;
     public Reward reward;
+    public int actualAmount;
 
     public Stats Queststats;
 

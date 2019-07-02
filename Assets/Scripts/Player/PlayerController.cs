@@ -12,6 +12,8 @@ public class PlayerController : CharacterBase
     private Rigidbody rb;
     private bool isGrounded;
     private bool inDialogue;
+    private CharacterBase target;
+
 
     public float ActualSpeed;
     public float ActualRotation;
@@ -33,7 +35,6 @@ public class PlayerController : CharacterBase
 		public float AlturaCAPModi;
         public float armaduraCAPModi;
         public float speedModi;
-        public float rotateModi;
     }
 
 	public float VidaCAPTot {get {return playerStats.vidaCAP + statsMod.vidaCAPModi;}}
@@ -46,7 +47,6 @@ public class PlayerController : CharacterBase
 	public float ManaCAPTot {get {return playerStats.mana;}}
 	public float StaminaCAPTot {get {return playerStats.staminaCAP + statsMod.StaminaCAPModi;}}
     public float SpeedTot { get { return playerStats.speed + statsMod.speedModi; } }
-    public float rotateTot { get { return playerStats.rotation + statsMod.rotateModi; } }
 	public float XPTot {get {return playerStats.xp;}}
 	public float LevelTot {get {return playerStats.level;}}
 
@@ -60,6 +60,7 @@ public class PlayerController : CharacterBase
     {
         if (!inDialogue)
         {
+            //Movimiento
             ActualSpeed = Input.GetAxis("Vertical") * SpeedTot;
 
             if (Input.GetKey(KeyCode.LeftShift))
@@ -99,5 +100,15 @@ public class PlayerController : CharacterBase
         {
             isGrounded = false;
         }
+    }
+
+    public void Attack()
+    {
+        
+    }
+
+    public void TakeDamage()
+    {
+        throw new System.NotImplementedException();
     }
 }

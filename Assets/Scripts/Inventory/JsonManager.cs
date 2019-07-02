@@ -213,9 +213,9 @@ public class JsonManager : MonoBehaviour
             {
                 jsonObjaux = jsonObj[i].GetField("Objetivo");
                 questArray[i].obj = new Objetivo();
-                questArray[i].obj.type = (jsonObjaux.HasField("type")) ? (Objetivo.QuestType)(System.Enum.Parse(typeof(Objetivo.QuestType), (jsonObjaux.GetField("type").str))) : Objetivo.QuestType.ERROR;
-                questArray[i].obj.cuantitive = (jsonObjaux.HasField("cuantitive")) ? jsonObjaux.GetField("cuantitive").n : 0;
-                questArray[i].obj._class = jsonObjaux.HasField("class") ? jsonObjaux.GetField("class").str : "";
+                questArray[i].obj.type = (jsonObjaux.HasField("type")) ? (QuestType)(System.Enum.Parse(typeof(QuestType), (jsonObjaux.GetField("type").str))) : QuestType.ERROR;
+                questArray[i].obj.cuantitive = (jsonObjaux.HasField("cuantitive")) ? (int)jsonObjaux.GetField("cuantitive").n : 0;
+                questArray[i].obj._class = jsonObjaux.HasField("class") ? (CharacterType)(System.Enum.Parse(typeof(CharacterType), jsonObjaux.GetField("class").str)) : CharacterType.ERROR;
             }
             if (jsonObj[i].HasField("Reward"))
             {

@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum QuestType
+{
+    matar, caminar, ERROR
+}
+
 [System.Serializable]
 public class Objetivo
 {
     public QuestType type;
-    public float cuantitive;
-    public string _class;
+    public int cuantitive;
+    public CharacterType _class;
     public bool completed;
 
-    public enum QuestType
-    {
-       matar, caminar, ERROR
-    }
    /*bool checkCaminar()
     {
        //Checkear con un box collider y un tag

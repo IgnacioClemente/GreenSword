@@ -9,11 +9,25 @@
 			"Xp": 500
 		},
 		"SideQuest": "",
-		"Descripcion": "Mata a los guerreros del bosque",
+		"Descripcion": "Mata a los guerreros vampiro del bosque",
 		"name": "Quest1",
-		"NextQuest": "Sube Hacia el olimpo"
+		"NextQuest": "Sube hacia el olimpo"
 	},
 	"Quest2": {
+		"Objetivo": {
+			"type": "caminar",
+			"cuantitive": 0,
+			"class": "ERROR"
+		},
+		"Reward": {
+			"Xp": 0
+		},
+		"SideQuest": "",
+		"Descripcion": "Camina hacia llegar al olimpo",
+		"name": "Sube hacia el olimpo",
+		"NextQuest": "Derrota a los protectores del olimpo"
+	},
+	"Quest3": {
 		"Objetivo": {
 			"type": "matar",
 			"cuantitive": 2,
@@ -24,52 +38,94 @@
 		},
 		"SideQuest": "",
 		"Descripcion": "Mata a los protectores del olimpo",
-		"name": "Sube Hacia el olimpo",
+		"name": "Derrota a los protectores del olimpo",
 		"NextQuest": "Baja las escaleras"
-	},
-	"Quest3": {
-		"Objetivo": {
-			"type": "caminar",
-			"cuantitive": 0,
-			"class": "Ninguna"
-		},
-		"Reward": {
-			"Xp": 0
-		},
-		"SideQuest": "",
-		"Descripcion": "Camina hacia la entrada del erebo",
-		"name": "Baja las escaleras",
-		"NextQuest": "Entra a la cueva"
 	},
 	"Quest4": {
 		"Objetivo": {
 			"type": "caminar",
 			"cuantitive": 0,
-			"class": "Ninguna"
+			"class": "ERROR"
 		},
 		"Reward": {
 			"Xp": 0
 		},
 		"SideQuest": "",
-		"Descripcion": "Explora la zona",
-		"name": "Entra a la cueva",
-		"NextQuest": "Salta las rocas"
+		"Descripcion": "Baja las escaleras del olimpo",
+		"name": "Baja las escaleras",
+		"NextQuest": "Dirigete hacia la puerta del infierno"
 	},
 	"Quest5": {
 		"Objetivo": {
 			"type": "caminar",
-			"cuantitive": 2,
-			"class": "Roca"
+			"cuantitive": 0,
+			"class": "ERROR"
 		},
 		"Reward": {
-			"Xp": 300
+			"Xp": 0
 		},
-		"SideQuest": "SideQuest1",
-		"Descripcion": "Salta las roca evitando a los arqueros",
-		"name": "Salta las rocas",
-		"NextQuest": "Dirigete hacia la puerta"
+		"SideQuest": "",
+		"Descripcion": "Dirigete hacia el infierno",
+		"name": "Dirigete hacia la puerta del infierno",
+		"NextQuest": "Abre la puerta"
 	},
 	"Quest6": {
+		"Objetivo": {
+			"type": "caminar",
+			"cuantitive": 0,
+			"class": "ERROR"
+		},
+		"Reward": {
+			"Xp": 0
+		},
+		"SideQuest": "",
+		"Descripcion": "Abre la puerta del infierno",
+		"name": "Abre la puerta",
+		"NextQuest": "Entra al infierno"
+	},
+	"Quest7": {
+		"Objetivo": {
+			"type": "caminar",
+			"cuantitive": 0,
+			"class": "ERROR"
+		},
+		"Reward": {
+			"Xp": 0
+		},
+		"SideQuest": "",
+		"Descripcion": "Entra al infierno",
+		"name": "Entra al infierno",
+		"NextQuest": "Salta las rocas"
+	},
+	"Quest8": {
+		"Objetivo": {
+			"type": "caminar",
+			"cuantitive": 0,
+			"class": "ERROR"
+		},
+		"Reward": {
+			"Xp": 0
+		},
+		"SideQuest": "",
+		"Descripcion": "Salta las rocas",
+		"name": "Salta las rocas",
+		"NextQuest": "Abre la puerta misteriosa"
+	},
+	"Quest9": {
+		"Objetivo": {
+			"type": "caminar",
+			"cuantitive": 0,
+			"class": "ERROR"
+		},
+		"Reward": {
+			"Xp": 0
+		},
+		"SideQuest": "",
+		"Descripcion": "Abre la puerta",
+		"name": "Abre la puerta misteriosa",
+		"NextQuest": "Derrota a Shirak"
+	},
+	"Quest10": {
 		"Objetivo": {
 			"type": "matar",
 			"cuantitive": 1,
@@ -79,8 +135,22 @@
 			"Xp": 1500
 		},
 		"SideQuest": "",
-		"Descripcion": "Consigue tus venganza",
-		"name": "Dirigete hacia la puerta",
-		"NextQuest": "Escapa"
+		"Descripcion": "Consigue tu venganza",
+		"name": "Derrota a Shira",
+		"NextQuest": "Huye Con tu padre"
+	},
+	"Quest11": {
+		"Objetivo": {
+			"type": "caminar",
+			"cuantitive": 0,
+			"class": "ERROR"
+		},
+		"Reward": {
+			"Xp": 0
+		},
+		"SideQuest": "",
+		"Descripcion": "Huye con tu padre del infierno",
+		"name": "Huye Con tu padre",
+		"NextQuest": ""
 	}
 }

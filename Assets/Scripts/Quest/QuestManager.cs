@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    public static QuestManager Instance { get; private set; }
+
     [SerializeField] JsonManager jsonmanager;
     [SerializeField] PlayerController player;
 
@@ -14,8 +16,13 @@ public class QuestManager : MonoBehaviour
     List<Quest> toBeRewardedQuest;
     List<Quest> finishedQuests;
 
+    public Quest ActiveQuest { get { return activeQuest; } }
+
     void Awake()
     {
+        if (Instance != null) Destroy(gameObject);
+        Instance = this;
+        
         listQuest = new List<Quest>();
         listSideQuest = new List<Quest>();
         toBeRewardedQuest = new List<Quest>();
@@ -103,4 +110,45 @@ public class QuestManager : MonoBehaviour
 
          }*/
      }
+
+    public void CheckActiveQuest(CharacterType charType = CharacterType.ERROR, string questName = "")
+    {
+        if (activeQuest != null)
+        {
+            switch (activeQuest.obj.type)
+            {
+                case QuestType.matar:
+                    if(charType == activeQuest.obj._class)
+                    {
+                        activeQuest.actualAmount++;
+                        if(activeQuest.actualAmount >= activeQuest.obj.cuantitive)
+                        {
+                            FinishQuest(activeQuest);
+                        }
+                    }
+                    break;
+                case QuestType.caminar:
+                    if (activeQuest._name == questName) FinishQuest(activeQuest);
+                    break;
+                case QuestType.ERROR:
+                    break;
+                default:
+                    break;
+            }
+        }
+        if(activeSideQuest != null)
+        {
+            switch (activeSideQuest.obj.type)
+            {
+                case QuestType.matar:
+                    break;
+                case QuestType.caminar:
+                    break;
+                case QuestType.ERROR:
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 }
