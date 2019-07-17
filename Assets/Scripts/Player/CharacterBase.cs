@@ -7,7 +7,9 @@ public class CharacterBase : MonoBehaviour
     public string _name;
     public string desc;
     public CharacterType type;
-	public Stats playerStats;
+	public Stats characterStats;
+
+    protected bool canAttack = true;
     //characterType type = characterType.Guerrero;
     public CharacterBase (string name, string desc, CharacterType type)
     {
@@ -21,8 +23,25 @@ public class CharacterBase : MonoBehaviour
 		_name = _baseInfo._name;
 		desc = _baseInfo.desc;
 		type = _baseInfo.type;
-		playerStats = _baseInfo.playerStats;
+		characterStats = _baseInfo.characterStats;
 	}
+
+    public virtual void TakeDamage(float damage, EnemyController damager = null)
+    {
+        characterStats.vida -= (damage - characterStats.defensa);
+        Debug.Log(gameObject.name + " tomo " + (damage - characterStats.defensa) + " de daño, le quedan " + characterStats.vida + " de vida sobre " + characterStats.vidaCAP);
+        if (characterStats.vida <= 0) OnDeath();
+    }
+
+    protected virtual void OnDeath()
+    {
+        Destroy(gameObject);
+    }
+
+    protected virtual void AllowAttack()
+    {
+        canAttack = true;
+    }
 }
 
 public enum CharacterType

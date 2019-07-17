@@ -2,18 +2,18 @@
    "Personaje":{
       "Guerrero":{
          "type":"Guerrero",
-         "name":"Troll",
+         "name":"Vampiros",
          "descripcion":"Criatura de mal caracter y olor",
          "Stats":{
-            "Defensa":2,
-            "Ataque":4,
+            "Defensa":0,
+            "Ataque":3,
             "Speed":5,
             "Level":2,
-            "xp":0,
-            "Destreza":4,
+            "xp":50,
+            "Destreza":2,
             "Stamina":2,
             "Mana":0,
-            "Vida":100
+            "Vida":20
          }
       },
       "Heroe":{
@@ -22,11 +22,11 @@
          "descripcion":"Un joven listo para cobrar su venganza",
          "Stats":{
             "Defensa":2,
-            "Ataque":4,
+            "Ataque":5,
             "Speed":5,
             "Level":1,
             "xp":0,
-            "Destreza":2,
+            "Destreza":8,
             "Stamina":6,
             "Mana":0,
             "Vida":100
@@ -39,13 +39,13 @@
          "Stats":{
             "Defensa":1,
             "Ataque":5,
-            "Speed":5,
+            "Speed":0,
             "Level":4,
-            "xp":0,
-            "Destreza":2,
+            "xp":80,
+            "Destreza":5,
             "Stamina":4,
             "Mana":0,
-            "Vida":150
+            "Vida":15
          }
       },
       "Protectores":{
@@ -56,12 +56,12 @@
             "Defensa":2,
             "Ataque":5,
             "Speed":5,
-            "Level":6,
-            "xp":0,
-            "Destreza":2,
+            "Level":3,
+            "xp":60,
+            "Destreza":6,
             "Stamina":1,
             "Mana":0,
-            "Vida":300
+            "Vida":30
          }
       },
       "BOSS":{
@@ -70,14 +70,14 @@
          "descripcion":"Criatura maligna dispuesta a server a Hades",
          "Stats":{
             "Defensa":4,
-            "Ataque":6,
+            "Ataque":8,
             "Speed":5,
             "Level":10,
-            "xp":0,
+            "xp":200,
             "Destreza":4,
             "Stamina":2,
             "Mana":0,
-            "Vida":8500
+            "Vida":10
          }
       }
    }

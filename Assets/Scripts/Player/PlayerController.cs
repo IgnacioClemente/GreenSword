@@ -7,11 +7,15 @@ public class PlayerController : CharacterBase
     public Inventario inventario; 
     // string nombre = "Broth";
     public playerStatsModificables statsMod;
+    public PlayerAttackZone playerAttackZone;
 
     private Animator anim;
     private Rigidbody rb;
     private bool isGrounded;
     private bool inDialogue;
+    private bool canMove;
+    private bool defending;
+    private bool isDead;
     private CharacterBase target;
 
 
@@ -23,6 +27,7 @@ public class PlayerController : CharacterBase
     }
 
     public bool InDialogue { get { return inDialogue; } set { inDialogue = value; } }
+    public bool CanMove { get { return canMove; } set { canMove = value; } }
 
     public struct playerStatsModificables
     {
@@ -37,44 +42,70 @@ public class PlayerController : CharacterBase
         public float speedModi;
     }
 
-	public float VidaCAPTot {get {return playerStats.vidaCAP + statsMod.vidaCAPModi;}}
-	public float VidaTot {get {return playerStats.vida;}}
-	public float DefensaTot {get {return playerStats.defensa + statsMod.defensaModi;}}
-	public float AtaqueTot {get {return playerStats.ataque + statsMod.ataqueModi;}}
-	public float DestrezaTot {get {return playerStats.destreza + statsMod.destrecaModi;}}
-	public float ManaTot {get {return playerStats.manaCAP + statsMod.manaCAPModi;}}
-	public float StaminaTot {get {return playerStats.stamina;}}
-	public float ManaCAPTot {get {return playerStats.mana;}}
-	public float StaminaCAPTot {get {return playerStats.staminaCAP + statsMod.StaminaCAPModi;}}
-    public float SpeedTot { get { return playerStats.speed + statsMod.speedModi; } }
-	public float XPTot {get {return playerStats.xp;}}
-	public float LevelTot {get {return playerStats.level;}}
+	public float VidaCAPTot {get {return characterStats.vidaCAP + statsMod.vidaCAPModi;}}
+	public float VidaTot {get {return characterStats.vida;}}
+	public float DefensaTot {get {return characterStats.defensa + statsMod.defensaModi;}}
+	public float AtaqueTot {get {return characterStats.ataque + statsMod.ataqueModi;}}
+	public float DestrezaTot {get {return characterStats.destreza + statsMod.destrecaModi;}}
+	public float ManaTot {get {return characterStats.manaCAP + statsMod.manaCAPModi;}}
+	public float StaminaTot {get {return characterStats.stamina;}}
+	public float ManaCAPTot {get {return characterStats.mana;}}
+	public float StaminaCAPTot {get {return characterStats.staminaCAP + statsMod.StaminaCAPModi;}}
+    public float SpeedTot { get { return characterStats.speed + statsMod.speedModi; } }
+	public float XPTot {get {return characterStats.xp;}}
+	public float LevelTot {get {return characterStats.level;}}
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        canAttack = true;
+        canMove = true;
     }
 
     private void Update()
     {
+        if (isDead) return;
+
         if (!inDialogue)
         {
             //Movimiento
             ActualSpeed = Input.GetAxis("Vertical") * SpeedTot;
 
-            if (Input.GetKey(KeyCode.LeftShift))
+            if(canAttack && isGrounded && Input.GetMouseButtonDown(0))
             {
-                ActualSpeed *= 2f;
+                Attack();
+                StopDefending();
             }
 
-            transform.position += transform.forward * ActualSpeed * Time.deltaTime;
+            if(canAttack && isGrounded)
+            {
+                if (Input.GetMouseButtonDown(1))
+                    Defend();
 
-            ActualRotation = Input.GetAxis("Horizontal") * SpeedTot;
+                if (Input.GetMouseButtonUp(1))
+                    StopDefending();
+            }
 
-            transform.Rotate(Vector3.up * ActualRotation);
+            if (canMove)
+            {
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    ActualSpeed *= 2f;
+                }
 
-            if (isGrounded && Input.GetKeyDown(KeyCode.Space)) rb.AddForce(Vector3.up * 400);
+                transform.position += transform.forward * ActualSpeed * Time.deltaTime;
+
+                ActualRotation = Input.GetAxis("Horizontal") * SpeedTot;
+
+                transform.Rotate(Vector3.up * ActualRotation);
+
+                if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+                {
+                    anim.SetTrigger("Jump");
+                    rb.AddForce(Vector3.up * 400);
+                }
+            }
         }
         else
         {
@@ -82,6 +113,8 @@ public class PlayerController : CharacterBase
         }
 
         anim.SetFloat("Speed", Mathf.Abs(ActualSpeed));
+        anim.SetBool("IsGrounded", isGrounded);
+        anim.SetBool("IsDefending", defending);
 
         ActualSpeed = 0;
     }
@@ -103,12 +136,42 @@ public class PlayerController : CharacterBase
     }
 
     public void Attack()
-    {
-        
+    {   
+        anim.SetTrigger("Attack");
+        for (int i = 0; i < playerAttackZone.EnemyList.Count; i++)
+        {
+            playerAttackZone.EnemyList[i].TakeDamage(AtaqueTot);
+        }
+
+        canAttack = false;
+        Invoke("AllowAttack", 10 / DestrezaTot);
     }
 
-    public void TakeDamage()
+    public void Defend()
     {
-        throw new System.NotImplementedException();
+        if (!defending) anim.SetTrigger("Defend");
+        defending = true;
+    }
+
+    public void StopDefending()
+    {
+        defending = false;
+    }
+
+    public override void TakeDamage(float damage, EnemyController damager = null)
+    {
+        if (isDead || (defending && playerAttackZone.EnemyList.Contains(damager)))
+            return;
+
+        anim.SetTrigger("TakeDamage");
+        base.TakeDamage(damage, damager);
+    }
+
+    protected override void OnDeath()
+    {
+        isDead = true;
+        anim.SetBool("Dead", isDead);
+        anim.SetTrigger("Die");
+        //base.OnDeath();
     }
 }

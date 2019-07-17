@@ -56,7 +56,7 @@ public class QuestManager : MonoBehaviour
 
     void AddReward(Reward reward)
     {
-        player.playerStats.xp += reward.xp;
+        player.characterStats.xp += reward.xp;
         /*for(int i = 0; i < reward.item.Length;i++)
         {
             player.inventario.itemArray.Add(reward.item[i]);

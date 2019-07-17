@@ -10,7 +10,7 @@
 		},
 		"SideQuest": "",
 		"Descripcion": "Mata a los guerreros vampiro del bosque",
-		"name": "Quest1",
+		"name": "Elimina a los enemigos del bosque",
 		"NextQuest": "Sube hacia el olimpo"
 	},
 	"Quest2": {
@@ -53,7 +53,7 @@
 		"SideQuest": "",
 		"Descripcion": "Baja las escaleras del olimpo",
 		"name": "Baja las escaleras",
-		"NextQuest": "Dirigete hacia la puerta del infierno"
+		"NextQuest": "Dirigete hacia la montana"
 	},
 	"Quest5": {
 		"Objetivo": {
@@ -65,9 +65,9 @@
 			"Xp": 0
 		},
 		"SideQuest": "",
-		"Descripcion": "Dirigete hacia el infierno",
-		"name": "Dirigete hacia la puerta del infierno",
-		"NextQuest": "Abre la puerta"
+		"Descripcion": "Dirigete hacia la montana",
+		"name": "Dirigete hacia la montana",
+		"NextQuest": "Entra a la cueva"
 	},
 	"Quest6": {
 		"Objetivo": {
@@ -79,25 +79,11 @@
 			"Xp": 0
 		},
 		"SideQuest": "",
-		"Descripcion": "Abre la puerta del infierno",
-		"name": "Abre la puerta",
-		"NextQuest": "Entra al infierno"
-	},
-	"Quest7": {
-		"Objetivo": {
-			"type": "caminar",
-			"cuantitive": 0,
-			"class": "ERROR"
-		},
-		"Reward": {
-			"Xp": 0
-		},
-		"SideQuest": "",
-		"Descripcion": "Entra al infierno",
-		"name": "Entra al infierno",
+		"Descripcion": "Entra a la cueva",
+		"name": "Entra a la cueva",
 		"NextQuest": "Salta las rocas"
 	},
-	"Quest8": {
+	"Quest7": {
 		"Objetivo": {
 			"type": "caminar",
 			"cuantitive": 0,
@@ -111,7 +97,7 @@
 		"name": "Salta las rocas",
 		"NextQuest": "Abre la puerta misteriosa"
 	},
-	"Quest9": {
+	"Quest8": {
 		"Objetivo": {
 			"type": "caminar",
 			"cuantitive": 0,
@@ -125,7 +111,7 @@
 		"name": "Abre la puerta misteriosa",
 		"NextQuest": "Derrota a Shirak"
 	},
-	"Quest10": {
+	"Quest9": {
 		"Objetivo": {
 			"type": "matar",
 			"cuantitive": 1,
@@ -136,10 +122,10 @@
 		},
 		"SideQuest": "",
 		"Descripcion": "Consigue tu venganza",
-		"name": "Derrota a Shira",
+		"name": "Derrota a Shirak",
 		"NextQuest": "Huye Con tu padre"
 	},
-	"Quest11": {
+	"Quest10": {
 		"Objetivo": {
 			"type": "caminar",
 			"cuantitive": 0,

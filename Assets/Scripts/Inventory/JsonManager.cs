@@ -287,15 +287,16 @@ public class JsonManager : MonoBehaviour
             if (jsonObjaux[i].HasField("Stats"))
             {
                 jsonObjaux = jsonObjaux[i].GetField("Stats"); //aca convierto mi Aux en los stats del personaje indice i
-                playerArray[i].playerStats.ataque = (jsonObjaux.HasField("Ataque")) ? jsonObjaux.GetField("Ataque").n : 0; //es por eso que aca ya no uso el indice i para el jsonObjectAux
-                playerArray[i].playerStats.defensa = (jsonObjaux.HasField("Defensa")) ? jsonObjaux.GetField("Defensa").n : 0;
-                playerArray[i].playerStats.level = (jsonObjaux.HasField("Level")) ? jsonObjaux.GetField("Level").n : 0;
-                playerArray[i].playerStats.destreza = (jsonObjaux.HasField("Destreza")) ? jsonObjaux.GetField("Destreza").n : 0;
-                playerArray[i].playerStats.staminaCAP = (jsonObjaux.HasField("Stamina")) ? jsonObjaux.GetField("Stamina").n : 0;
-                playerArray[i].playerStats.manaCAP = (jsonObjaux.HasField("Mana")) ? jsonObjaux.GetField("Mana").n : 0;
-                playerArray[i].playerStats.vidaCAP = (jsonObjaux.HasField("Vida")) ? jsonObjaux.GetField("Vida").n : 0;
-                playerArray[i].playerStats.xp = (jsonObjaux.HasField("xp")) ? jsonObjaux.GetField("xp").n : 0;
-                playerArray[i].playerStats.speed = (jsonObjaux.HasField("Speed")) ? jsonObjaux.GetField("Speed").n : 0;
+                playerArray[i].characterStats.ataque = (jsonObjaux.HasField("Ataque")) ? jsonObjaux.GetField("Ataque").n : 0; //es por eso que aca ya no uso el indice i para el jsonObjectAux
+                playerArray[i].characterStats.defensa = (jsonObjaux.HasField("Defensa")) ? jsonObjaux.GetField("Defensa").n : 0;
+                playerArray[i].characterStats.level = (jsonObjaux.HasField("Level")) ? jsonObjaux.GetField("Level").n : 0;
+                playerArray[i].characterStats.destreza = (jsonObjaux.HasField("Destreza")) ? jsonObjaux.GetField("Destreza").n : 0;
+                playerArray[i].characterStats.staminaCAP = (jsonObjaux.HasField("Stamina")) ? jsonObjaux.GetField("Stamina").n : 0;
+                playerArray[i].characterStats.manaCAP = (jsonObjaux.HasField("Mana")) ? jsonObjaux.GetField("Mana").n : 0;
+                playerArray[i].characterStats.vidaCAP = (jsonObjaux.HasField("Vida")) ? jsonObjaux.GetField("Vida").n : 0;
+                playerArray[i].characterStats.vida = (jsonObjaux.HasField("Vida")) ? jsonObjaux.GetField("Vida").n : 0;
+                playerArray[i].characterStats.xp = (jsonObjaux.HasField("xp")) ? jsonObjaux.GetField("xp").n : 0;
+                playerArray[i].characterStats.speed = (jsonObjaux.HasField("Speed")) ? jsonObjaux.GetField("Speed").n : 0;
 
             }
         }
